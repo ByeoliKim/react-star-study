@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Hello () {
-    return <div>안녕하세요</div>
+    return <div>안녕하세요!!!</div>
 }
 //리액트 컴포넌트에서는 xml 형식의 값을 반환해 줄 수 있는데, 이를 JSX 라고 부릅니다
 
