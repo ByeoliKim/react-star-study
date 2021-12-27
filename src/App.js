@@ -1,17 +1,34 @@
 import Hello from './Hello';
+import './App.css'
 
 //컴포넌트는 일종의 UI 조각입니다
 //그리고 쉽게 재사용할 수 있습니다
 
 function App() {
+  const name = 'react'
+  const custom = {
+    backgroundColor: 'black',
+    color: 'aqua',
+    fontSize: 24, //기본 단위 px
+    padding: '1rem' //다른 단위 사용 시 문자열로 설정
+  }
   return (
-    <div>
-      <Hello/>
-      <Hello/>
-      <Hello/>
-    </div>
+    <>
+      {/* 주석은 화면에 보이지 않습니다!*/}
+      <Hello
+        //열리는 태그 내부에서는 이렇게 주석을 작성할 수 있습니다!
+      />
+      <p style={custom}>{name}</p>
+      <div className="gray-box"></div>
+    </>
     
   );
 }
+
+//Fragment 정의 : 단순히 감싸기 용으로 태그를 이용해야 할 때 사용하면 된다
+//형태는 <></>
+
+//JSX 문법에서는 background-color 가 아닌 backgroundColor 형태로 네이밍 해 줘야 합니다
+//JSX 문법에서는 주석을 {/* 이런 형태로 */} 작성합니다
 
 export default App;
