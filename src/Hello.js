@@ -1,7 +1,19 @@
 import React from 'react';
 
-function Hello ({ color, name }) {
-    return <div style={{ color }}>안녕하세요!!! {name}</div>
+function Hello ({ color, name, isSpecial }) {
+    return (
+        // <div style={{ color }}>
+        //     안녕하세요!!! {name}
+        // </div>
+        // <div style={{ color }}>
+        //     { isSpecial ? <b>*</b> : null }
+        //     안녕하세요 {name}
+        // </div>
+        <div style={{ color }}>
+            { isSpecial && <b>****</b> }
+            안녕하세요 {name}
+        </div>
+    )
 }
 
 Hello.defaultProps = {
@@ -31,3 +43,10 @@ export default Hello;
 //props는 객체 형태로 전달되며, 만약 name 값을 조회하고 싶다면 props.name 을 조회하면 된다
 
 //함수의 파라미터에서 비구조화 할당 문법을 사용하면 조금 더 코드를 간결하게 작성할 수 있다
+
+//JSX 에서 null, false, undefined 를 렌더링하게 된다면 아무것도 나타나지 않는다
+//보통 삼항연산자를 사용한 조건부 렌더링은 특정 조건에 따라 보여 줘야 하는 내용이 다를 때 사용합니다
+//isSpecial && <b>*</b> 의 결과는 false 일 때는 false 이고, true 일 때는 <b>*</b> 가 성립된다
+
+//props 값 설정을 생략하면 ={true} 
+//컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고, 값 설정을 생략한다면 이를 true 로 설정한 것으로 간주한다
