@@ -49,4 +49,4 @@ export default Hello;
 //isSpecial && <b>*</b> 의 결과는 false 일 때는 false 이고, true 일 때는 <b>*</b> 가 성립된다
 
 //props 값 설정을 생략하면 ={true} 
-//컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고, 값 설정을 생략한다면 이를 true 로 설정한 것으로 간주한다
+//컴포넌트의 props 값을 설정하게 될 때 만약 props 이름만 작성하고, 값 설정을 생략한다면 이를 true 로 설정한 것으로 간주한다..
