@@ -10,11 +10,13 @@ function Counter() {
     // 아래는 배열 비구조화 할당을 통해 각 원소를 추출해 준 것!
     const onIncrease = () => {
         //console.log('+1');
-        setNumber(number + 1);
+        //setNumber(number + 1);
+        setNumber(prevNumber => prevNumber + 1);
     }
     const onDecrease = () => {
         //console.log('-1');
-        setNumber(number -1);
+        //setNumber(number -1);
+        setNumber(prevNumber => prevNumber - 1);
     }
 
     return(
@@ -30,3 +32,5 @@ export default Counter;
 //엘리먼트에 이벤트를 설정해 줄 때에는 on이벤트이름={실행하고싶은함수} 형태로 설정해 준다.
 //컴포넌트에서 동적인 값의 상태를(state) 라고 부릅니다.
 //리액트에는 useState 라는 함수가 있습니다. 이것을 사용하면 컴포넌트에서 상태를 관리할 수 있습니다.
+//onIncrease와 onDecrease 에서 setNumber 를 사용할 때, 그 다음 상태를 파라미터로 넣어 준 것이 아니라 값을 업데이트하는 함수를 파라미터로 넣는다
+//함수형 업데이트는 주로 나중에 컴포넌트르르 최적화할 때 사용하게 됨
