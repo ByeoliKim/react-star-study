@@ -12,6 +12,8 @@ function App() {
   let [postTit,postMdf] = useState(['ㄴ로스트 아크 데모닉 각인 세팅🐇','ㄱ로스트 아크 데모닉 각인 세팅🐇🐇', 'ㄷ로스트 아크 데모닉 각인 세팅🐇🐇🐇']); //[a,b]
   let postTitle = "로스트 아크 데모닉 각인 세팅"
   let [like, likeUp] = useState(0); //[state, state 변경함수] 
+  let [modal, modalOpen] = useState(false);
+  let [modal2, modalOpen2] = useState(false);
 
   function subjectModify () {
     //버튼이 클릭했을 때 실행하기 위해서 소괄호 생략
@@ -41,11 +43,46 @@ function App() {
         <ul>
           <li><h4>{ postTit[0] } <span onClick={ ()=>{ likeUp(like + 1) } }>👍🏻</span> { like } </h4> <span>3월 1일 발행</span></li>
           <li><h4>{ postTit[1] }</h4> <span>3월 1일 발행</span></li>
-          <li><h4>{ postTit[2] }</h4> <span>3월 1일 발행</span></li>
+          <li><h4 onClick={ ()=>{modalOpen(true)} }>{ postTit[2] }</h4> <span>3월 1일 발행</span></li>
         </ul>
       </div>
+
+      <button onClick={ ()=>{ modalOpen2(!modal2) } }>모달2 오픈</button>
+      
+      {
+        //jsx 문법에서는 중괄호 안에서 
+        modal === true ? <Modal></Modal> : null
+        //null = 텅빈 html
+      }
+
+      {
+        modal2 === true ? <Modal2></Modal2> : null
+      }
+
     </div>
   );
+}
+
+//컴포넌트 이름은 대문자로 만든다
+//return() 안에 있는 건 태그 하나로 묶는다
+function Modal(){
+  return (
+    <div className='modal'>
+        <h2>제목</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+    </div>
+  )
+}
+
+function Modal2(){
+  return (
+    <div className='modal'>
+        <h2>제목2</h2>
+        <p>날짜2</p>
+        <p>상세내용2</p>
+    </div>
+  )
 }
 
 export default App;
