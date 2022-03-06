@@ -5,6 +5,7 @@ import './App.css';
 //리액트(자바스크립트 프레임워크)는 JSX 문법을 사용하면 데이터 바인딩을 통한 랜더링이 쉽다
 
 function App() {
+  //dd이ㄹ일요일은 쉬어야 합니다.
 
   //var [a,b] = [10, 100];  //10은 a 변수에, 100은 b 변수에 담기
   //새로고침 없이 스무스하게 랜더링하기 위해 state를 사용해야 한다
@@ -81,6 +82,8 @@ function App() {
       <button onClick={ ()=>{ modalOpen2(!modal2) } }>모달2 오픈</button>
       
       { doubleUI() }
+
+      
 
       {
         //jsx 문법에서는 중괄호 안에서 
