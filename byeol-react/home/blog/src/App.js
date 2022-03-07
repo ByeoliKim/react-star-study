@@ -15,6 +15,7 @@ function App() {
   let [like, likeUp] = useState(0); //[state, state 변경함수] 
   let [modal, modalOpen] = useState(false);
   let [modal2, modalOpen2] = useState(false);
+  let [numClick, numClickUpdate] = useState(0);
   var arrayTest = [2,3,4];
   //배열 내의 모든 데이터에 똑같은 작업을 시켜주고 싶으면 map()
   var arrayTest2 = arrayTest.map(function(a){
@@ -77,17 +78,19 @@ function App() {
         </ul>
       </div>
 
-      
+      <button onClick={ ()=>{ numClickUpdate(0) } }>버튼1</button>
+      <button onClick={ ()=>{ numClickUpdate(1) } }>버튼2</button>
+      <button onClick={ ()=>{ numClickUpdate(2) } }>버튼3</button>
 
-      <button onClick={ ()=>{ modalOpen2(!modal2) } }>모달2 오픈</button>
+      <button onClick={ ()=>{ modalOpen(!modal) } }>모달2 오픈</button>
       
-      { doubleUI() }
+      {/* { doubleUI() } */}
 
       
 
       {
         //jsx 문법에서는 중괄호 안에서 
-        modal === true ? <Modal></Modal> : null
+        modal === true ? <Modal postTit={postTit} numClick={numClick}></Modal> : null
         //null = 텅빈 html
       }
 
@@ -101,10 +104,10 @@ function App() {
 
 //컴포넌트 이름은 대문자로 만든다
 //return() 안에 있는 건 태그 하나로 묶는다
-function Modal(){
+function Modal(props){
   return (
     <div className='modal'>
-        <h2>제목</h2>
+        <h2>{ props.postTit[props.numClick] }</h2>
         <p>날짜</p>
         <p>상세내용</p>
     </div>
@@ -114,7 +117,7 @@ function Modal(){
 function Modal2(){
   return (
     <div className='modal'>
-        <h2>제목2</h2>
+        <h2>제목</h2>
         <p>날짜2</p>
         <p>상세내용2</p>
     </div>
