@@ -14,8 +14,10 @@ function App() {
   let postTitle = "로스트 아크 데모닉 각인 세팅"
   let [like, likeUp] = useState(0); //[state, state 변경함수] 
   let [modal, modalOpen] = useState(false);
-  let [modal2, modalOpen2] = useState(false);
   let [numClick, numClickUpdate] = useState(0);
+  let [empty, emptyUpdate] = useState('');  //초기값
+
+
   var arrayTest = [2,3,4];
   //배열 내의 모든 데이터에 똑같은 작업을 시켜주고 싶으면 map()
   var arrayTest2 = arrayTest.map(function(a){
@@ -68,9 +70,9 @@ function App() {
       <div className="content-list">
         <ul>
       {
-        postTit.map(function(list){
+        postTit.map(function(list, i){
           return (
-          <li><h4>{ list }</h4> <span>3월 1일 발행</span></li>
+          <li key={i}><h4 onClick={ ()=>{ numClickUpdate(i) } }>{ list }<span onClick={()=>{likeUp (like+1)}}>👍🏻</span>{like}</h4><span>3월 1일 발행</span></li>
           )
         })
         //{ 반복할데이터.map(()=>{ return <html> }) }
@@ -78,24 +80,28 @@ function App() {
         </ul>
       </div>
 
-      <button onClick={ ()=>{ numClickUpdate(0) } }>버튼1</button>
+      {/* <button onClick={ ()=>{ numClickUpdate(0) } }>버튼1</button>
       <button onClick={ ()=>{ numClickUpdate(1) } }>버튼2</button>
-      <button onClick={ ()=>{ numClickUpdate(2) } }>버튼3</button>
+      <button onClick={ ()=>{ numClickUpdate(2) } }>버튼3</button> */}
 
-      <button onClick={ ()=>{ modalOpen(!modal) } }>모달2 오픈</button>
+      {/* { empty }
+      <input onChange={ (e)=>{ emptyUpdate(e.target.value) } } /> */}
       
-      {/* { doubleUI() } */}
+      <div className='publish'>
+        <input onChange={ (e)=>{ emptyUpdate(e.target.value) } }/>
+        <button onClick={()=>{ 
+          var arrayCopy = [...postTit]
+          arrayCopy.unshift(empty); //unshift : 배열 맨앞에 자료를 추가하는 문법
+          postMdf( arrayCopy );
+         }}>저장</button>
+      </div>
 
-      
+      <button onClick={ ()=>{modalOpen(!modal)} }>모달 오픈</button>
 
       {
         //jsx 문법에서는 중괄호 안에서 
         modal === true ? <Modal postTit={postTit} numClick={numClick}></Modal> : null
         //null = 텅빈 html
-      }
-
-      {
-        modal2 === true ? <Modal2></Modal2> : null
       }
 
     </div>
@@ -110,16 +116,6 @@ function Modal(props){
         <h2>{ props.postTit[props.numClick] }</h2>
         <p>날짜</p>
         <p>상세내용</p>
-    </div>
-  )
-}
-
-function Modal2(){
-  return (
-    <div className='modal'>
-        <h2>제목</h2>
-        <p>날짜2</p>
-        <p>상세내용2</p>
     </div>
   )
 }

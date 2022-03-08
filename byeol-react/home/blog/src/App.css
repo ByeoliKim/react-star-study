@@ -10,6 +10,9 @@ body { font-family: 'nanumsquare'; }
 .content-list h4 > span { cursor: pointer; }
 .content-list span { font-size:12px; font-weight:300; }
 .modal { margin:20px; padding:20px; background:#fff; box-shadow: rgba(0,0,0,0.05) 1px 1px 10px; }
+.publish { margin:30px 0 30px; }
+.publish input { width:80%; padding:10px; font-size:16px; border:1px solid #ddd; border-radius:5px; }
+.publish button { display:block; margin:10px auto; }
 /* logo 애니메이션 */
 @media (prefers-reduced-motion: no-preference) { .App-logo { animation: App-logo-spin infinite 20s linear; } }
 @keyframes App-logo-spin { from { transform: rotate(0deg);} to { transform: rotate(360deg);} }
