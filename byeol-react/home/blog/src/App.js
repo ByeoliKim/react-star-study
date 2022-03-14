@@ -91,7 +91,8 @@ function App() {
         <input onChange={ (e)=>{ emptyUpdate(e.target.value) } }/>
         <button onClick={()=>{ 
           var arrayCopy = [...postTit]
-          arrayCopy.unshift(empty); //unshift : 배열 맨앞에 자료를 추가하는 문법
+          arrayCopy.push(empty); //unshift : 배열 맨앞에 자료를 추가하는 문법
+          //push : 배열 맨뒤에 자료를 추가하는 문법
           postMdf( arrayCopy );
          }}>저장</button>
       </div>
